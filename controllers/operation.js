@@ -1,16 +1,15 @@
 exports.createTask = async (req, res) => {
-	const { createClient } = require("@astrajs/collections");
-	const astraClient = await createClient({
-		astraDatabaseId: process.env.ASTRA_DB_ID,
-		astraDatabaseRegion: process.env.ASTRA_DB_REGION,
-		applicationToken: process.env.ASTRA_DB_APPLICATION_TOKEN,
-	});
-
-	const taskCollection = astraClient.namespace("feed").collection("taskCollection");
-
-	const post = await taskCollection.create({
-		"task": req.body.task
-	});
+	let result = Array.isArray(req.Body);
+	let response = {
+		"":"",
+		"":"",
+	};
 	console.log(req);
-	res.send("POST request was successfully completed.");
+	res
+    .code(200)
+    .header("Content-Type", object.ContentType)
+    .header("Content-Length", object.ContentLength)
+    .header("Last-Modified", object.LastModified)
+    .header("ETag", object.ETag)
+    .send(object.Body);
 };
